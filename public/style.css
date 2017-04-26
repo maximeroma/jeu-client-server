@@ -1,0 +1,15 @@
+table {   
+	table-layout: fixed;  
+	width: 40%;   
+	border-collapse: separate;   
+	border: 1px solid purple; 
+}    
+
+td 
+{     
+	display: table-cell;     
+	vertical-align: inherit;   
+	padding: 20px;
+	border: 1px solid purple;   
+	background-color: #F5DEB3;
+	color:red;   }
