@@ -10,6 +10,21 @@ td
 	display: table-cell;     
 	vertical-align: inherit;   
 	padding: 20px;
-	border: 1px solid purple;   
-	background-color: #F5DEB3;
-	color:red;   }
+	border: 1px solid purple;     
+}
+
+.VE{
+	background-color: #02AC1E;
+}
+ 
+.ROCK{
+    background-color: #666;
+}
+
+.CA{
+    background-color: #C00C00;
+}
+
+.HE{
+    background-color: #1D1075; 
+}

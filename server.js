@@ -9,13 +9,34 @@ app.listen(3000);
 
 //-- DB
 
-var vegetal = { "type" : 'VE', };
+var vegetal = { "type" : 'VE',
+				"age" : 0,
+				"viellir" : function () {
+					this.age= count++;
+				},
+			
+};
 
-var herbivore = { "type" : 'HE', };
+var herbivore = { "type" : 'HE', 
+					"age" : 0,
+					"viellir" : function () {
+						this.age = count++;
+					},
+};
 
-var carnivore = { "type" : 'CA', };
+var carnivore = { "type" : 'CA', 
+					"age" : 0,
+					"viellir" : function () {
+						this.age = count++;
+					},
+};
 
-var cailloux = { "type" : 'ROCK', }
+var cailloux = { "type" : 'ROCK', 
+					"age" : 0,
+					"viellir" : function () {
+					this.age= count++
+					},
+};
 
 var espece = [vegetal, herbivore, carnivore, cailloux];
 

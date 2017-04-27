@@ -1,8 +1,9 @@
-$(document).ready(function()
+$(document).ready(function ()
 {
 	
 	var bestiole;
 	var intervalID;
+	var count = 0;
 
 
 	// fonction générer un tableau dynamique
@@ -11,10 +12,10 @@ $(document).ready(function()
 	{     
 		for (var i = 0; i < line; i++) 
 		{         
-			$("#vue").append("<tr data-row='"+i+"'></tr>");           
+			$("#vue").append("<tr></tr>");           
 			for (var j = 0;j  < col; j++) 
 			{         
-				$("#vue tr:last-child").append("<td width='10' height='10' data-id='"+i+"/"+j+"'>"+'&nbsp'+"</td>");         
+				$("#vue tr:last-child").append("<td class='' width='10' height='10' data-id='"+i+"/"+j+"'>"+'&nbsp'+"</td>");         
 			}     
 		}		
 	};   
@@ -23,15 +24,30 @@ $(document).ready(function()
 
 	function positionBestiole (line, col, bestiole)
 	{
-		var y = Math.round(Math.random()*line);
-		var x = Math.round(Math.random()*col);
-		var target= $("#vue").find('[data-id="'+y+'/'+x+'"]');
-		console.log(target);
-		target.html(bestiole);
-	}
+		var i = Math.round(Math.random()*line);
+		var j = Math.round(Math.random()*col);
+		var target= $("#vue").find('[data-id="'+i+'/'+j+'"]');
+		if ( target.attr('class') === '')
+		{
+			target.addClass(bestiole);
+		}
+	};
 	
 
+	function compteur () 
+	{
+		count++;
+	}
 
+	function ajouterAge (bestiole)
+	{
+		bestiole.viellir;
+		//console.log(count);
+	}
+
+
+
+	// fonction pour faire une requete
 
 	function getAjax ()
 	{
@@ -40,21 +56,24 @@ $(document).ready(function()
 			url: 'http://localhost:3000/getEspece',
 			type: 'get',
 		})
-		.done(function(data){
-			console.log (data);
+		.done(function (data)
+		{
 			bestiole = data;
-			console.log (bestiole.type);
-			positionBestiole (20,20, bestiole.type);		
+			positionBestiole (20, 20, bestiole.type);
+			ajouterAge(bestiole)
+			console.log(bestiole.age);
 		});	
-	}
+	};
+
 
 	function ajoutBestiole ()
 	{
-		intervalID = setInterval (getAjax, 1000);
+		intervalID = setInterval (getAjax, 500);		
+		console.log(count);
 	}
 
 	generateTable (20, 20);
-	ajoutBestiole();
+	ajoutBestiole ();
 	
 
 });
